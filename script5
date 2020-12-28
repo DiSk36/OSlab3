@@ -1,0 +1,22 @@
+#!/bin/bash
+
+while true
+do
+   read LINE
+   echo "$LINE" > pipe
+   case $LINE in
+      "+" | "*" | [0-9]*)
+      :
+      ;;
+      "QUIT")
+      echo "QUIT"
+      rm pipe
+      exit 0
+      ;;
+      *)
+      echo "ERROR"
+      rm pipe
+      exit 1
+      ;;
+   esac
+done

@@ -1,0 +1,21 @@
+#!/bin/bash
+z
+while true
+do
+   read LINE
+   case $LINE in
+      "+")
+      kill -USR1 $(cat pipe)
+      ;;
+      "*")
+      kill -USR2 $(cat pipe)
+      ;;
+      "TERM")
+      kill -SIGTERM $(cat pipe)
+      exit 0
+      ;;
+      *)
+      :
+      ;;
+   esac
+done

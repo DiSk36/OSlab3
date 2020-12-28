@@ -1,0 +1,5 @@
+#!/bin/bash
+
+curdata=$(date +"%d-%m-%y-%H-%M")
+mkdir ~/test && echo "catalog test was created successfully" >> ~/report && touch ~/test/$curdata
+ping www.net_nikogo.ru || echo "$curdata: Error" >> ~/report

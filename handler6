@@ -1,0 +1,32 @@
+#!/bin/bash
+echo $$ > pipe
+res=1
+mode="+"
+sigterm()
+{
+   echo "stop"
+   exit 0
+}
+addition()
+{
+   mode="+"
+}
+multiplication()
+{
+   mode="*"
+}
+trap 'sigterm' SIGTERM
+trap 'addition' USR1
+trap 'multiplication' USR2
+while true; do
+   case "$mode" in
+      "+")
+      res=$(($res+2))
+      ;;
+      "*")
+      res=$(($res*2))
+      ;;
+   esac
+   sleep 1
+   echo "$res"
+done
